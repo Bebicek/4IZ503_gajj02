@@ -1,0 +1,393 @@
+================================================================================
+ČÁST 1: NAČTENÍ A PROFILOVÁNÍ DAT
+================================================================================
+
+============================================================
+ZÁKLADNÍ STATISTIKY:
+============================================================
+   - Počet střeleckých incidentů: 1705
+   - Počet měst: 174
+   - Počet atributů (shootings): 24
+   - Počet atributů (cities): 28
+
+============================================================
+PROFILOVÁNÍ KATEGORIÁLNÍCH PROMĚNNÝCH:
+============================================================
+
+   ARMED_CATEGORY:
+      - Gun: 995 (58.4%)
+      - Other: 274 (16.1%)
+      - Blade: 248 (14.5%)
+      - Unarmed: 188 (11.0%)
+
+   AGE_GROUP:
+      - Middle: 783 (45.9%)
+      - Young: 600 (35.2%)
+      - Senior: 203 (11.9%)
+      - Minor: 38 (2.2%)
+
+   RACE_CATEGORY:
+      - Black: 619 (36.3%)
+      - White: 495 (29.0%)
+      - Hispanic: 364 (21.3%)
+      - Other: 189 (11.1%)
+      - Asian: 38 (2.2%)
+
+   THREAT_CATEGORY:
+      - Attack: 1108 (65.0%)
+      - Other_Threat: 597 (35.0%)
+
+   MENTAL_ILLNESS_FLAG:
+      - No: 1382 (81.1%)
+      - Yes: 323 (18.9%)
+
+   BODY_CAMERA_FLAG:
+      - No: 1432 (84.0%)
+      - Yes: 273 (16.0%)
+
+   BUDGET_CATEGORY:
+      - Low_Budget: 1110 (65.1%)
+      - Medium_Budget: 425 (24.9%)
+      - High_Budget: 170 (10.0%)
+
+   POPULATION_SIZE:
+      - Large: 684 (40.1%)
+      - Medium: 660 (38.7%)
+      - Small: 361 (21.2%)
+
+   SHOOTING_RATE_CATEGORY:
+      - High_Rate: 838 (49.1%)
+      - Medium_Rate: 585 (34.3%)
+      - Low_Rate: 282 (16.5%)
+
+   GENDER:
+      - M: 1625 (95.3%)
+      - F: 80 (4.7%)
+
+   FLEE:
+      - Not fleeing: 1029 (60.4%)
+      - Foot: 308 (18.1%)
+      - Car: 246 (14.4%)
+      - Other: 49 (2.9%)
+
+================================================================================
+ČÁST 2: PŘÍPRAVA DAT PRO MINING
+================================================================================
+
+Připraveno 1705 záznamů s 11 atributy pro mining
+
+================================================================================
+ČÁST 3: 4FT-MINER - ASOCIAČNÍ PRAVIDLA
+================================================================================
+Cleverminer version  1.2.5
+
+------------------------------------------------------------
+ÚLOHA 1: Jaké okolnosti vedou k DUŠEVNÍMU ONEMOCNĚNÍ u obětí?
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Najít okolnosti, za kterých je u obětí policejní střelby častěji 
+přítomen signál duševního onemocnění (mental_illness_flag = 'Yes').
+
+KVANTIFIKÁTORY:
+- Base >= 15 (minimálně 15 případů)
+- AAD >= 0.3 (pravděpodobnost vyšší o 30% oproti průměru)
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  4ftMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 31, rules 9, times: prep 0.01sec, processing 0.51sec
+
+VÝSLEDKY ÚLOHY 1:
+
+CleverMiner task processing summary:
+
+Task type : 4ftMiner
+Number of verifications : 31
+Number of rules : 9
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE  CONF  AAD    Rule
+     1   156 0.315 +0.664 race_category(White) => mental_illness_flag(Yes) | ---
+     2    73 0.282 +0.488 race_category(White) & age_group(Middle) => mental_illness_flag(Yes) | ---
+     3    36 0.383 +1.022 race_category(White) & age_group(Senior) => mental_illness_flag(Yes) | ---
+     4    44 0.338 +0.787 race_category(White) & age_group(Young) => mental_illness_flag(Yes) | ---
+     5    40 0.268 +0.417 race_category(White) & population_size(Large) => mental_illness_flag(Yes) | ---
+     6    73 0.371 +0.956 race_category(White) & population_size(Medium) => mental_illness_flag(Yes) | ---
+     7    43 0.289 +0.523 race_category(White) & population_size(Small) => mental_illness_flag(Yes) | ---
+     8    56 0.276 +0.456 age_group(Senior) => mental_illness_flag(Yes) | ---
+     9    36 0.364 +0.920 age_group(Senior) & population_size(Medium) => mental_illness_flag(Yes) | ---
+
+
+------------------------------------------------------------
+ÚLOHA 2: Jaké faktory jsou spojeny s VYSOKOU MÍROU STŘELBY?
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Identifikovat charakteristiky spojené s vysokou mírou 
+policejních střelb na 100 000 obyvatel.
+
+KVANTIFIKÁTORY:
+- Base >= 20
+- AAD >= 0.2
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  4ftMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 45, rules 13, times: prep 0.01sec, processing 0.01sec
+
+VÝSLEDKY ÚLOHY 2:
+
+CleverMiner task processing summary:
+
+Task type : 4ftMiner
+Number of verifications : 45
+Number of rules : 13
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE  CONF  AAD    Rule
+     1    33 0.611 +0.243 race_category(Black) & budget_category(High_Budget) => shooting_rate_category(High_Rate) | ---
+     2    21 0.778 +0.582 race_category(Hispanic) & budget_category(High_Budget) => shooting_rate_category(High_Rate) | ---
+     3    45 0.652 +0.327 race_category(Hispanic) & budget_category(Medium_Budget) => shooting_rate_category(High_Rate) | ---
+     4    29 0.592 +0.204 race_category(Hispanic) & armed_category(Unarmed) => shooting_rate_category(High_Rate) | ---
+     5   295 0.596 +0.213 race_category(White) => shooting_rate_category(High_Rate) | ---
+     6    51 0.729 +0.482 race_category(White) & budget_category(High_Budget) => shooting_rate_category(High_Rate) | ---
+     7    83 0.648 +0.319 race_category(White) & budget_category(Medium_Budget) => shooting_rate_category(High_Rate) | ---
+     8   181 0.637 +0.297 race_category(White) & armed_category(Gun) => shooting_rate_category(High_Rate) | ---
+     9   118 0.694 +0.412 budget_category(High_Budget) => shooting_rate_category(High_Rate) | ---
+    10    74 0.712 +0.448 budget_category(High_Budget) & armed_category(Gun) => shooting_rate_category(High_Rate) | ---
+    11   251 0.591 +0.202 budget_category(Medium_Budget) => shooting_rate_category(High_Rate) | ---
+    12    36 0.621 +0.263 budget_category(Medium_Budget) & armed_category(Blade) => shooting_rate_category(High_Rate) | ---
+    13   143 0.598 +0.217 budget_category(Medium_Budget) & armed_category(Gun) => shooting_rate_category(High_Rate) | ---
+
+
+================================================================================
+ČÁST 4: CF-MINER - ANALÝZA HISTOGRAMŮ
+================================================================================
+
+------------------------------------------------------------
+ÚLOHA 3: Liší se DISTRIBUCE TYPU ZBRANĚ podle rasy?
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Najít podmínky, za kterých se histogram (distribuce) typu zbraně 
+liší od celkového průměru.
+
+KVANTIFIKÁTORY:
+- S_Down >= 1 (alespoň jeden krok dolů v histogramu)
+- Base >= 30
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  CFMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 5, rules 5, times: prep 0.01sec, processing 0.01sec
+
+VÝSLEDKY ÚLOHY 3:
+
+CleverMiner task processing summary:
+
+Task type : CFMiner
+Number of verifications : 5
+Number of rules : 5
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE  S_UP  S_DOWN Condition
+     1    38     1     1 race_category(Asian)
+     2   619     1     2 race_category(Black)
+     3   364     1     2 race_category(Hispanic)
+     4   189     1     2 race_category(Other)
+     5   495     1     2 race_category(White)
+
+
+------------------------------------------------------------
+ÚLOHA 4: Liší se VĚKOVÁ STRUKTURA podle velikosti města?
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Zjistit, jak se liší věková struktura obětí v závislosti 
+na velikosti města.
+
+KVANTIFIKÁTORY:
+- S_Down >= 1
+- Base >= 50
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  CFMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 3, rules 3, times: prep 0.01sec, processing 0.01sec
+
+VÝSLEDKY ÚLOHY 4:
+
+CleverMiner task processing summary:
+
+Task type : CFMiner
+Number of verifications : 3
+Number of rules : 3
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE  S_UP  S_DOWN Condition
+     1   684     1     1 population_size(Large)
+     2   660     1     1 population_size(Medium)
+     3   361     1     1 population_size(Small)
+
+
+================================================================================
+ČÁST 5: SD4FT-MINER - SUBGROUP DISCOVERY
+================================================================================
+
+------------------------------------------------------------
+ÚLOHA 5: Rozdíly v POUŽITÍ BODY KAMER mezi velikostmi měst
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Najít situace, kde se pravděpodobnost použití body kamery
+výrazně liší mezi různými velikostmi měst.
+
+KVANTIFIKÁTORY:
+- Base1 >= 20, Base2 >= 20
+- Ratioconf >= 1.1
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  SD4ftMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 9, rules 3, times: prep 0.01sec, processing 0.01sec
+
+VÝSLEDKY ÚLOHY 5:
+
+CleverMiner task processing summary:
+
+Task type : SD4ftMiner
+Number of verifications : 9
+Number of rules : 3
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE1 BASE2 RatioConf DeltaConf Rule
+     1   109    48    1.198    +0.026   => body_camera_flag(Yes) | --- : population_size(Large) x population_size(Small)
+     2   116   109    1.103    +0.016   => body_camera_flag(Yes) | --- : population_size(Medium) x population_size(Large)
+     3   116    48    1.322    +0.043   => body_camera_flag(Yes) | --- : population_size(Medium) x population_size(Small)
+
+
+------------------------------------------------------------
+ÚLOHA 6: Rozdíly v podílu NEOZBROJENÝCH OBĚTÍ podle rasy
+------------------------------------------------------------
+
+ZADÁNÍ:
+-------
+Cíl: Zjistit, zda existují rozdíly v podílu neozbrojených obětí
+mezi různými rasovými skupinami.
+
+KVANTIFIKÁTORY:
+- Base1 >= 15, Base2 >= 15
+- Ratioconf >= 1.1
+
+Cleverminer version 1.2.5.
+Starting data preparation ...
+Automatically reordering numeric categories ...
+Automatically reordering numeric categories ...done
+Encoding columns into bit-form...
+Encoding columns into bit-form...done
+Data preparation finished.
+Will go for  SD4ftMiner
+Starting to mine rules.
+  0%|                                                                                            |Elapsed Time: 0:00:00
+100%|############################################################################################|Elapsed Time: 0:00:00
+Done. Total verifications : 25, rules 2, times: prep 0.01sec, processing 0.01sec
+
+VÝSLEDKY ÚLOHY 6:
+
+CleverMiner task processing summary:
+
+Task type : SD4ftMiner
+Number of verifications : 25
+Number of rules : 2
+Total time needed : 00h 00m 00s
+Time of data preparation : 00h 00m 00s
+Time of rule mining : 00h 00m 00s
+
+
+List of rules:
+RULEID BASE1 BASE2 RatioConf DeltaConf Rule
+     1    77    47    1.310    +0.029   => armed_category(Unarmed) | --- : race_category(Black) x race_category(White)
+     2    49    47    1.418    +0.040   => armed_category(Unarmed) | --- : race_category(Hispanic) x race_category(White)
+
+
+================================================================================
+SHRNUTÍ CLEVERMINER ANALÝZY
+================================================================================
+
+PROVEDENÉ ÚLOHY:
+----------------
+1. 4ft-Miner: Faktory duševního onemocnění
+2. 4ft-Miner: Faktory vysoké míry střelby
+3. CF-Miner: Distribuce typu zbraně podle rasy
+4. CF-Miner: Věková struktura podle velikosti města
+5. SD4ft-Miner: Rozdíly v použití body kamer
+6. SD4ft-Miner: Neozbrojené oběti podle rasy
+
+ANALÝZA DOKONČENA
+

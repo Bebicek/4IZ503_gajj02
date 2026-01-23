@@ -1,0 +1,107 @@
+================================================================================
+MACHINE LEARNING ANALÝZA - POLICEJNÍ STŘELBY V USA
+================================================================================
+
+Načteno 1705 záznamů
+
+================================================================================
+ČÁST 2: KONTINGENČNÍ TABULKY A CHI-SQUARE TESTY
+================================================================================
+
+------------------------------------------------------------
+VZTAH 1: Rasa oběti vs Typ zbraně
+------------------------------------------------------------
+
+KONTINGENČNÍ TABULKA (race_category vs armed_category):
+armed_category  Blade  Gun  Other  Unarmed
+race_category                             
+Asian              12   18      4        4
+Black              71  379     92       77
+Hispanic           55  200     60       49
+Other              32  114     32       11
+White              78  284     86       47
+
+CHI-SQUARE TEST:
+   Chi2 statistika: 26.2407
+   p-hodnota: 0.009923
+   Stupně volnosti: 12
+   --> STATISTICKY VÝZNAMNÝ VZTAH (p < 0.05)
+   Cramerovo V (síla vztahu): 0.0716
+
+------------------------------------------------------------
+VZTAH 2: Věková skupina vs Duševní onemocnění
+------------------------------------------------------------
+
+KONTINGENČNÍ TABULKA (age_group vs mental_illness_flag):
+mental_illness_flag   No  Yes
+age_group                    
+Middle               627  156
+Minor                 35    3
+Senior               147   56
+Unknown               72    9
+Young                501   99
+
+CHI-SQUARE TEST:
+   Chi2 statistika: 18.9545
+   p-hodnota: 0.000802
+   Stupně volnosti: 4
+   --> STATISTICKY VÝZNAMNÝ VZTAH (p < 0.05)
+   Cramerovo V (síla vztahu): 0.1054
+
+------------------------------------------------------------
+VZTAH 3: Velikost města vs Míra střelby
+------------------------------------------------------------
+
+KONTINGENČNÍ TABULKA (population_size vs shooting_rate_category):
+shooting_rate_category  High_Rate  Low_Rate  Medium_Rate
+population_size                                         
+Large                         198       156          330
+Medium                        419        72          169
+Small                         221        54           86
+
+CHI-SQUARE TEST:
+   Chi2 statistika: 189.3931
+   p-hodnota: 0.000000
+   Stupně volnosti: 4
+   --> STATISTICKY VÝZNAMNÝ VZTAH (p < 0.05)
+   Cramerovo V (síla vztahu): 0.2357
+
+------------------------------------------------------------
+VZTAH 4: Rozpočet policie vs Použití body kamery
+------------------------------------------------------------
+
+KONTINGENČNÍ TABULKA (budget_category vs body_camera_flag):
+body_camera_flag   No  Yes
+budget_category           
+High_Budget       153   17
+Low_Budget        910  200
+Medium_Budget     369   56
+
+CHI-SQUARE TEST:
+   Chi2 statistika: 10.4316
+   p-hodnota: 0.005430
+   Stupně volnosti: 2
+   --> STATISTICKY VÝZNAMNÝ VZTAH (p < 0.05)
+   Cramerovo V (síla vztahu): 0.0782
+
+------------------------------------------------------------
+VZTAH 5: Rasa oběti vs Míra střelby
+------------------------------------------------------------
+
+KONTINGENČNÍ TABULKA (race_category vs shooting_rate_category):
+shooting_rate_category  High_Rate  Low_Rate  Medium_Rate
+race_category                                           
+Asian                          20         5           13
+Black                         226       158          235
+Hispanic                      192        29          143
+Other                         105        29           55
+White                         295        61          139
+
+CHI-SQUARE TEST:
+   Chi2 statistika: 98.0051
+   p-hodnota: 0.000000
+   Stupně volnosti: 8
+   --> STATISTICKY VÝZNAMNÝ VZTAH (p < 0.05)
+   Cramerovo V (síla vztahu): 0.1695
+
+
