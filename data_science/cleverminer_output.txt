@@ -105,7 +105,7 @@ Will go for  4ftMiner
 Starting to mine rules.
   0%|                                                                                            |Elapsed Time: 0:00:00
 100%|############################################################################################|Elapsed Time: 0:00:00
-Done. Total verifications : 31, rules 9, times: prep 0.01sec, processing 0.51sec
+Done. Total verifications : 31, rules 9, times: prep 0.01sec, processing 0.05sec
 
 VÝSLEDKY ÚLOHY 1:
 
@@ -311,7 +311,7 @@ Will go for  SD4ftMiner
 Starting to mine rules.
   0%|                                                                                            |Elapsed Time: 0:00:00
 100%|############################################################################################|Elapsed Time: 0:00:00
-Done. Total verifications : 9, rules 3, times: prep 0.01sec, processing 0.01sec
+Done. Total verifications : 9, rules 3, times: prep 0.01sec, processing 0.02sec
 
 VÝSLEDKY ÚLOHY 5:
 
@@ -374,20 +374,4 @@ List of rules:
 RULEID BASE1 BASE2 RatioConf DeltaConf Rule
      1    77    47    1.310    +0.029   => armed_category(Unarmed) | --- : race_category(Black) x race_category(White)
      2    49    47    1.418    +0.040   => armed_category(Unarmed) | --- : race_category(Hispanic) x race_category(White)
-
-
-================================================================================
-SHRNUTÍ CLEVERMINER ANALÝZY
-================================================================================
-
-PROVEDENÉ ÚLOHY:
-----------------
-1. 4ft-Miner: Faktory duševního onemocnění
-2. 4ft-Miner: Faktory vysoké míry střelby
-3. CF-Miner: Distribuce typu zbraně podle rasy
-4. CF-Miner: Věková struktura podle velikosti města
-5. SD4ft-Miner: Rozdíly v použití body kamer
-6. SD4ft-Miner: Neozbrojené oběti podle rasy
-
-ANALÝZA DOKONČENA
 
