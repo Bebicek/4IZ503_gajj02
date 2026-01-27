@@ -136,7 +136,12 @@ print("Model: Predikce vysoké míry střelby")
 print("-"*60)
 
 y_rate = (df_clean['shooting_rate_category'] == 'High_Rate').astype(int)
-X_rate = df_ml.drop(['shooting_rate_category'], axis=1)
+cols_to_drop = ['shooting_rate_category', 'id', 'name', 'date', 
+                'city_clean', 'state_clean', 'city_state',
+                'race', 'armed', 'threat_level', 'manner_of_death',
+                'signs_of_mental_illness', 'body_camera']
+cols_to_drop = [c for c in cols_to_drop if c in df_ml.columns]
+X_rate = df_ml.drop(cols_to_drop, axis=1)
 
 X_train_r, X_test_r, y_train_r, y_test_r = train_test_split(
     X_rate, y_rate, test_size=0.3, random_state=42

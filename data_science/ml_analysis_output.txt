@@ -113,30 +113,18 @@ Model: Predikce vysoké míry střelby
 ------------------------------------------------------------
 
 VÝSLEDKY RANDOM FOREST:
-   Přesnost na trénovacích datech: 0.842
-   Přesnost na testovacích datech: 0.816
+   Přesnost na trénovacích datech: 0.704
+   Přesnost na testovacích datech: 0.664
 
 FEATURE IMPORTANCE:
-   state_clean               ███████ 0.2545
-   population_size           █████ 0.1770
-   city_clean                ████ 0.1619
-   city_state                ████ 0.1415
-   race_category             █ 0.0426
-   budget_category           █ 0.0375
-   race                      █ 0.0371
-   date                       0.0319
-   age                        0.0221
-   id                         0.0214
-   name                       0.0170
-   armed                      0.0117
-   flee                       0.0066
-   age_group                  0.0065
-   armed_category             0.0060
-   threat_level               0.0053
-   body_camera_flag           0.0052
-   threat_category            0.0050
-   body_camera                0.0021
-   gender                     0.0021
-   mental_illness_flag        0.0019
-   signs_of_mental_illness    0.0017
-   manner_of_death            0.0014
+   population_size           ████████████ 0.4011
+   race_category             █████ 0.1809
+   age                       ███ 0.1193
+   budget_category           ███ 0.1050
+   flee                      █ 0.0405
+   threat_category            0.0326
+   armed_category             0.0322
+   age_group                  0.0283
+   body_camera_flag           0.0256
+   mental_illness_flag        0.0194
+   gender                     0.0152
